@@ -1,0 +1,29 @@
+{% extends 'Search/base.html'%}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+<div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl">Search Engine</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="query" placeholder="Enter your search query">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if query %}
+    <h2>Search Results for "{{ query }}"</h2>
+    <ul>
+        {% for result in results %}
+        <li>{{ result }}</li>
+        {% empty %}
+        <li>No results found.</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+    {% endblock %}
+

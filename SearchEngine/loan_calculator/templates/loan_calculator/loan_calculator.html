@@ -1,0 +1,20 @@
+{% extends 'loan_calculator/base1.html'%}
+
+{% block title %}
+    Loan Calculator
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Calculate">
+</form>
+
+{% if monthly_payment %}
+<p>Monthly Payment: {{ monthly_payment|floatformat:2 }}</p>
+{% endif %}
+
+
+
+{% endblock %}
